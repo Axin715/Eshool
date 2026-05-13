@@ -27,6 +27,12 @@
       }
     },
     {
+      "path": "pages/features/index",
+      "style": {
+        "navigationBarTitleText": "功能中心"
+      }
+    },
+    {
       "path": "pages/features/leave/create",
       "style": {
         "navigationBarTitleText": "请假申请"
