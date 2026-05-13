@@ -8,6 +8,12 @@
       }
     },
     {
+      "path": "pages/messages/index",
+      "style": {
+        "navigationBarTitleText": "消息"
+      }
+    },
+    {
       "path": "pages/login/index",
       "style": {
         "navigationBarTitleText": "",
