@@ -1,7 +1,7 @@
 <template>
   <view class="records-page">
     <view class="records-list">
-      <view class="record-item" v-for="item in records" :key="item.id">
+      <view class="record-item pressable" v-for="item in records" :key="item.id">
         <view class="r-left">
           <text class="r-student">为学生充值</text>
           <text class="r-date">{{ item.date }}</text>
@@ -29,27 +29,27 @@ const records = ref<RecordItem[]>([]);
 <style lang="scss" scoped>
 .records-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 30rpx;
+  background: var(--color-bg);
+  padding: var(--space-lg);
 }
 
 .record-item {
-  background: #fff;
-  border-radius: 12rpx;
-  padding: 24rpx;
-  margin-bottom: 16rpx;
+  background: var(--color-bg-card);
+  border-radius: var(--space-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.r-left { display: flex; flex-direction: column; gap: 6rpx; }
-.r-student { font-size: 28rpx; font-weight: bold; }
-.r-date { font-size: 24rpx; color: #999; }
+.r-left { display: flex; flex-direction: column; gap: var(--space-xs); }
+.r-student { font-size: var(--font-base); font-weight: bold; }
+.r-date { font-size: var(--font-sm); color: var(--color-text-tertiary); }
 
 .r-amount {
-  font-size: 32rpx;
+  font-size: var(--font-md);
   font-weight: bold;
-  color: #4CAF50;
+  color: var(--color-accent);
 }
 </style>

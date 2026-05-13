@@ -22,7 +22,7 @@
     <u-empty v-else text="暂无排班，点击下方按钮创建" mode="list" />
 
     <u-button type="primary" text="编辑排班" shape="circle"
-              :customStyle="{ margin: '40rpx 30rpx', height: '96rpx' }"
+              class="submit-btn"
               @click="goEdit" />
   </view>
 </template>
@@ -81,51 +81,51 @@ loadSchedule();
 <style lang="scss" scoped>
 .duty-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 30rpx;
+  background: var(--color-bg);
+  padding: var(--space-lg);
 }
 
 .week-selector {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20rpx;
-  padding: 20rpx;
-  background: #fff;
-  border-radius: 12rpx;
-  margin-bottom: 20rpx;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  background: var(--color-bg-card);
+  border-radius: var(--space-sm);
+  margin-bottom: var(--space-sm);
 }
 
-.week-text { font-size: 28rpx; font-weight: bold; }
+.week-text { font-size: var(--font-base); font-weight: bold; }
 
 .schedule-table {
-  background: #fff;
+  background: var(--color-bg-card);
   border-radius: 16rpx;
   overflow: hidden;
 }
 
 .day-row {
   display: flex;
-  border-bottom: 1rpx solid #f0f0f0;
+  border-bottom: 1rpx solid var(--color-border-light);
 }
 
 .day-label {
   width: 160rpx;
-  padding: 20rpx;
-  background: #F8FAFC;
+  padding: var(--space-sm);
+  background: var(--color-bg-subtle);
   text-align: center;
 }
 
 .day-name { font-size: 26rpx; font-weight: bold; display: block; }
-.day-date { font-size: 22rpx; color: #999; display: block; }
+.day-date { font-size: var(--font-xs); color: var(--color-text-tertiary); display: block; }
 
 .day-duty {
   flex: 1;
-  padding: 20rpx;
+  padding: var(--space-sm);
   display: flex;
   align-items: center;
 }
 
-.duty-name { font-size: 28rpx; color: #4A90D9; }
-.duty-empty { font-size: 26rpx; color: #ccc; }
+.duty-name { font-size: var(--font-base); color: var(--color-primary); }
+.duty-empty { font-size: 26rpx; color: var(--color-text-tertiary); }
 </style>

@@ -1,11 +1,11 @@
 <template>
   <view class="meal-page">
-    <view class="student-picker" @click="showStudentPicker = true">
+    <view class="student-picker pressable" @click="showStudentPicker = true">
       <text class="picker-label">充值对象</text>
       <view class="picker-value">
         <text v-if="selectedStudent">{{ selectedStudent.name }}</text>
         <text v-else class="placeholder">请选择学生</text>
-        <u-icon name="arrow-down" size="16" color="#999" />
+        <u-icon name="arrow-down" size="16" color="var(--color-text-tertiary)" />
       </view>
     </view>
 
@@ -17,7 +17,7 @@
     <view class="amount-section">
       <text class="section-label">选择充值金额</text>
       <view class="amount-grid">
-        <view class="amount-item" v-for="amt in amounts" :key="amt"
+        <view class="amount-item pressable" v-for="amt in amounts" :key="amt"
               :class="{ active: rechargeAmount === amt }"
               @click="rechargeAmount = amt">
           <text>¥ {{ amt }}</text>
@@ -30,7 +30,7 @@
     </view>
 
     <u-button type="primary" text="确认充值" shape="circle"
-              :customStyle="{ margin: '40rpx 30rpx', height: '96rpx' }"
+              class="submit-btn"
               :disabled="!canRecharge"
               @click="handleRecharge" />
 
@@ -43,7 +43,7 @@
             <text>{{ s.name }} - {{ s.className }}</text>
             <text class="picker-balance">余额: ¥{{ s.mealBalance.toFixed(2) }}</text>
           </view>
-          <u-icon v-if="selectedStudent?.id === s.id" name="checkbox-mark" color="#4A90D9" />
+          <u-icon v-if="selectedStudent?.id === s.id" name="checkbox-mark" color="var(--color-primary)" />
         </view>
       </view>
     </u-popup>
@@ -119,74 +119,74 @@ loadStudents();
 <style lang="scss" scoped>
 .meal-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 30rpx;
+  background: var(--color-bg);
+  padding: var(--space-lg);
 }
 
 .student-picker {
-  background: #fff;
-  border-radius: 12rpx;
-  padding: 24rpx;
+  background: var(--color-bg-card);
+  border-radius: var(--space-sm);
+  padding: var(--space-md);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.picker-label { font-size: 28rpx; color: #333; }
-.picker-value { display: flex; align-items: center; gap: 10rpx; font-size: 28rpx; }
-.placeholder { color: #ccc; }
+.picker-label { font-size: var(--font-base); color: var(--color-text-primary); }
+.picker-value { display: flex; align-items: center; gap: var(--space-xs); font-size: var(--font-base); }
+.placeholder { color: var(--color-text-tertiary); }
 
 .balance-card {
-  background: linear-gradient(135deg, #4A90D9, #5BA0F5);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   border-radius: 16rpx;
-  padding: 40rpx;
+  padding: var(--space-xl);
   text-align: center;
-  margin: 30rpx 0;
-  color: #fff;
+  margin: var(--space-lg) 0;
+  color: var(--color-bg-card);
 }
 
 .balance-label { font-size: 26rpx; opacity: 0.8; display: block; }
-.balance-amount { font-size: 56rpx; font-weight: bold; display: block; margin-top: 10rpx; }
+.balance-amount { font-size: 56rpx; font-weight: bold; display: block; margin-top: var(--space-xs); }
 
-.amount-section { margin-top: 40rpx; }
-.section-label { font-size: 28rpx; color: #333; margin-bottom: 20rpx; display: block; }
+.amount-section { margin-top: var(--space-xl); }
+.section-label { font-size: var(--font-base); color: var(--color-text-primary); margin-bottom: var(--space-sm); display: block; }
 
 .amount-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16rpx;
+  gap: var(--space-sm);
 }
 
 .amount-item {
-  background: #fff;
-  border-radius: 12rpx;
-  padding: 24rpx;
+  background: var(--color-bg-card);
+  border-radius: var(--space-sm);
+  padding: var(--space-md);
   text-align: center;
   font-size: 30rpx;
-  border: 2rpx solid #e0e0e0;
+  border: 2rpx solid var(--color-border);
 }
 
 .amount-item.active {
-  border-color: #4A90D9;
+  border-color: var(--color-primary);
   background: #F0F6FF;
-  color: #4A90D9;
+  color: var(--color-primary);
 }
 
 .amount-item.custom {
-  padding: 12rpx;
+  padding: var(--space-sm);
 }
 
-.picker-content { padding: 30rpx; }
-.picker-title { font-size: 32rpx; font-weight: bold; text-align: center; margin-bottom: 20rpx; }
+.picker-content { padding: var(--space-lg); }
+.picker-title { font-size: var(--font-md); font-weight: bold; text-align: center; margin-bottom: var(--space-sm); }
 
 .picker-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24rpx 0;
-  border-bottom: 1rpx solid #f0f0f0;
-  font-size: 28rpx;
+  padding: var(--space-md) 0;
+  border-bottom: 1rpx solid var(--color-border-light);
+  font-size: var(--font-base);
 }
 
-.picker-balance { font-size: 24rpx; color: #999; display: block; }
+.picker-balance { font-size: var(--font-sm); color: var(--color-text-tertiary); display: block; }
 </style>

@@ -3,14 +3,14 @@
     <u-form :model="form" ref="formRef" labelWidth="140">
       <u-form-item label="预约类型" required>
         <view class="type-select">
-          <view class="type-card" :class="{ active: form.type === 'doctor' }"
+          <view class="type-card pressable" :class="{ active: form.type === 'doctor' }"
                 @click="form.type = 'doctor'">
-            <text class="type-icon">🏥</text>
+            <u-icon name="plus-circle-fill" size="24" :color="form.type === 'doctor' ? 'var(--color-primary)' : 'var(--color-text-tertiary)'" />
             <text class="type-name">校医</text>
           </view>
-          <view class="type-card" :class="{ active: form.type === 'counsel' }"
+          <view class="type-card pressable" :class="{ active: form.type === 'counsel' }"
                 @click="form.type = 'counsel'">
-            <text class="type-icon">💬</text>
+            <u-icon name="chat-fill" size="24" :color="form.type === 'counsel' ? 'var(--color-primary)' : 'var(--color-text-tertiary)'" />
             <text class="type-name">心理咨询</text>
           </view>
         </view>
@@ -27,7 +27,7 @@
 
       <u-form-item label="预约时段" required>
         <view class="slot-grid">
-          <view class="slot-item" v-for="slot in timeSlots" :key="slot"
+          <view class="slot-item pressable" v-for="slot in timeSlots" :key="slot"
                 :class="{ active: form.timeSlot === slot }"
                 @click="form.timeSlot = slot">
             <text>{{ slot }}</text>
@@ -41,12 +41,12 @@
     </u-form>
 
     <u-button type="primary" text="提交预约" shape="circle"
-              :customStyle="{ margin: '40rpx 30rpx', height: '96rpx' }"
+              class="submit-btn"
               @click="handleSubmit" />
 
     <view class="history-section" v-if="historyList.length">
       <text class="history-title">我的预约</text>
-      <view class="history-item" v-for="item in historyList" :key="item.id">
+      <view class="history-item pressable" v-for="item in historyList" :key="item.id">
         <view class="h-left">
           <text class="h-type">{{ item.type === 'doctor' ? '校医' : '心理咨询' }}</text>
           <text class="h-time">{{ item.date }} {{ item.timeSlot }}</text>
@@ -106,71 +106,74 @@ loadHistory();
 <style lang="scss" scoped>
 .psychology-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 30rpx;
+  background: var(--color-bg);
+  padding: var(--space-lg);
 }
 
 .type-select {
   display: flex;
-  gap: 20rpx;
+  gap: var(--space-sm);
 }
 
 .type-card {
   flex: 1;
   text-align: center;
-  padding: 24rpx;
-  border-radius: 12rpx;
-  border: 2rpx solid #e0e0e0;
-  background: #fff;
+  padding: var(--space-md);
+  border-radius: var(--space-sm);
+  border: 2rpx solid var(--color-border);
+  background: var(--color-bg-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .type-card.active {
-  border-color: #4A90D9;
-  background: #F0F6FF;
+  border-color: var(--color-primary);
+  background: var(--color-bg);
 }
 
-.type-icon { font-size: 40rpx; display: block; }
-.type-name { font-size: 26rpx; display: block; margin-top: 6rpx; }
+.type-name { font-size: 26rpx; display: block; }
 
 .slot-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12rpx;
+  gap: var(--space-sm);
 }
 
 .slot-item {
   text-align: center;
   padding: 14rpx;
-  border-radius: 8rpx;
-  background: #f5f5f5;
-  font-size: 22rpx;
+  border-radius: var(--space-xs);
+  background: var(--color-bg-subtle);
+  font-size: var(--font-xs);
 }
 
 .slot-item.active {
-  background: #4A90D9;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-bg-card);
 }
 
-.history-section { margin-top: 40rpx; }
+.history-section { margin-top: var(--space-xl); }
 
 .history-title {
   font-size: 30rpx;
   font-weight: bold;
   display: block;
-  margin-bottom: 20rpx;
+  margin-bottom: var(--space-sm);
 }
 
 .history-item {
-  background: #fff;
-  border-radius: 12rpx;
-  padding: 24rpx;
-  margin-bottom: 16rpx;
+  background: var(--color-bg-card);
+  border-radius: var(--space-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.h-left { display: flex; flex-direction: column; gap: 6rpx; }
-.h-type { font-size: 28rpx; font-weight: bold; }
-.h-time { font-size: 24rpx; color: #999; }
+.h-left { display: flex; flex-direction: column; gap: var(--space-xs); }
+.h-type { font-size: var(--font-base); font-weight: bold; }
+.h-time { font-size: var(--font-sm); color: var(--color-text-tertiary); }
 </style>

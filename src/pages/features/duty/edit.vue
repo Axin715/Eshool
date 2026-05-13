@@ -8,28 +8,28 @@
           <text class="edit-day-name">{{ day.dayOfWeek }}</text>
           <text class="edit-day-date">{{ day.date.slice(5) }}</text>
         </view>
-        <view class="edit-picker" @click="openPicker(index)">
+        <view class="edit-picker pressable" @click="openPicker(index)">
           <text v-if="assignments[index]?.parentName" class="selected-name">
             {{ assignments[index].parentName }}
           </text>
           <text v-else class="no-selection">点击选择</text>
-          <u-icon name="arrow-down" size="16" color="#999" />
+          <u-icon name="arrow-down" size="16" color="var(--color-text-tertiary)" />
         </view>
       </view>
     </view>
 
     <u-button type="primary" text="保存并发布" shape="circle"
-              :customStyle="{ margin: '40rpx 30rpx', height: '96rpx' }"
+              class="submit-btn"
               @click="handleSave" />
 
     <u-popup :show="showPicker" mode="bottom" @close="showPicker = false">
       <view class="picker-content">
         <view class="picker-title">选择值班家长</view>
-        <view class="picker-item" v-for="p in parentList" :key="p.id"
+        <view class="picker-item pressable" v-for="p in parentList" :key="p.id"
               @click="selectParent(p)">
           <text>{{ p.name }}</text>
           <u-icon v-if="currentPickIndex >= 0 && assignments[currentPickIndex]?.parentId === p.id"
-                  name="checkbox-mark" color="#4A90D9" />
+                  name="checkbox-mark" color="var(--color-primary)" />
         </view>
       </view>
     </u-popup>
@@ -120,58 +120,58 @@ loadExistingSchedule();
 <style lang="scss" scoped>
 .duty-edit-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 30rpx;
+  background: var(--color-bg);
+  padding: var(--space-lg);
 }
 
 .edit-tip {
   font-size: 26rpx;
-  color: #999;
-  margin-bottom: 20rpx;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-sm);
   text-align: center;
 }
 
 .edit-list {
-  background: #fff;
+  background: var(--color-bg-card);
   border-radius: 16rpx;
 }
 
 .edit-row {
   display: flex;
   align-items: center;
-  border-bottom: 1rpx solid #f0f0f0;
+  border-bottom: 1rpx solid var(--color-border-light);
 }
 
 .edit-day {
   width: 160rpx;
-  padding: 24rpx;
-  background: #F8FAFC;
+  padding: var(--space-md);
+  background: var(--color-bg-subtle);
   text-align: center;
 }
 
 .edit-day-name { font-size: 26rpx; font-weight: bold; display: block; }
-.edit-day-date { font-size: 22rpx; color: #999; display: block; }
+.edit-day-date { font-size: var(--font-xs); color: var(--color-text-tertiary); display: block; }
 
 .edit-picker {
   flex: 1;
-  padding: 24rpx;
+  padding: var(--space-md);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.selected-name { font-size: 28rpx; color: #4A90D9; }
-.no-selection { font-size: 26rpx; color: #ccc; }
+.selected-name { font-size: var(--font-base); color: var(--color-primary); }
+.no-selection { font-size: 26rpx; color: var(--color-text-tertiary); }
 
-.picker-content { padding: 30rpx; }
-.picker-title { font-size: 32rpx; font-weight: bold; text-align: center; margin-bottom: 20rpx; }
+.picker-content { padding: var(--space-lg); }
+.picker-title { font-size: var(--font-md); font-weight: bold; text-align: center; margin-bottom: var(--space-sm); }
 
 .picker-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24rpx 0;
-  border-bottom: 1rpx solid #f0f0f0;
-  font-size: 28rpx;
+  padding: var(--space-md) 0;
+  border-bottom: 1rpx solid var(--color-border-light);
+  font-size: var(--font-base);
 }
 </style>
