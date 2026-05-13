@@ -1,12 +1,72 @@
-// 主题色覆盖 (必须在 @import 之前)
-$u-primary: #4A90D9;
-$u-success: #4CAF50;
-$u-warning: #FFB347;
-$u-error: #FF6B6B;
+// ========== uView Plus Theme Override ==========
+$u-primary: #3B82F6;
+$u-success: #059669;
+$u-warning: #F59E0B;
+$u-error: #EF4444;
 
 @import 'uview-plus/theme.scss';
 
-// 全局页面背景色
+// ========== Design Tokens (CSS Custom Properties) ==========
 page {
-  background-color: #F0F6FF;
+  // Semantic colors
+  --color-primary: #3B82F6;
+  --color-primary-light: #EFF6FF;
+  --color-primary-dark: #2563EB;
+  --color-secondary: #6366F1;
+  --color-accent: #059669;
+  --color-accent-light: #ECFDF5;
+
+  // Neutral scale
+  --color-bg: #F4F7FC;
+  --color-bg-card: #FFFFFF;
+  --color-bg-subtle: #F8FAFC;
+  --color-text-primary: #1E293B;
+  --color-text-secondary: #64748B;
+  --color-text-tertiary: #94A3B8;
+  --color-text-inverse: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-border-light: #F1F5F9;
+  --color-error: #EF4444;
+
+  // Status colors
+  --color-status-success-bg: #ECFDF5;
+  --color-status-success-text: #059669;
+  --color-status-warning-bg: #FFFBEB;
+  --color-status-warning-text: #D97706;
+  --color-status-error-bg: #FEF2F2;
+  --color-status-error-text: #DC2626;
+
+  // Spacing scale (8rpx rhythm)
+  --space-xs: 8rpx;
+  --space-sm: 16rpx;
+  --space-md: 24rpx;
+  --space-lg: 32rpx;
+  --space-xl: 48rpx;
+  --space-2xl: 64rpx;
+
+  // Typography scale
+  --font-xs: 22rpx;
+  --font-sm: 24rpx;
+  --font-base: 28rpx;
+  --font-md: 32rpx;
+  --font-lg: 36rpx;
+  --font-xl: 40rpx;
+
+  // Radii
+  --radius-sm: 8rpx;
+  --radius-md: 12rpx;
+  --radius-lg: 16rpx;
+  --radius-xl: 24rpx;
+
+  // Shadows (Soft UI - subtle depth)
+  --shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+
+  background-color: var(--color-bg);
+}
+
+// Shared submit button pattern
+.submit-btn {
+  margin: var(--space-xl) var(--space-lg);
+  height: 96rpx;
 }

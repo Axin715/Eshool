@@ -11,15 +11,33 @@ onLaunch(() => {
 <style lang="scss">
 @import 'uview-plus/index.scss';
 
-/* 全局通用样式 */
+/* ========== Layout ========== */
+.page-container {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
 .flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.page-container {
-  min-height: 100vh;
-  background-color: #F0F6FF;
+/* ========== Card ========== */
+.card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========== Press Feedback ========== */
+.pressable {
+  transition: transform 0.15s ease, opacity 0.15s ease;
+
+  &:active {
+    transform: scale(0.97);
+    opacity: 0.85;
+  }
 }
 </style>

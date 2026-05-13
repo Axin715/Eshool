@@ -96,12 +96,12 @@
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "数字校园",
-    "navigationBarBackgroundColor": "#4A90D9",
-    "backgroundColor": "#F0F6FF"
+    "navigationBarBackgroundColor": "#3B82F6",
+    "backgroundColor": "#F4F7FC"
   },
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#4A90D9",
+    "selectedColor": "#3B82F6",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
