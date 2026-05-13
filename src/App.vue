@@ -1,13 +1,25 @@
 <script setup lang="ts">
-import { onLaunch, onShow, onHide } from "@dcloudio/uni-app";
+import { onLaunch } from '@dcloudio/uni-app';
+import { useUserStore } from '@/stores/user';
+
 onLaunch(() => {
-  console.log("App Launch");
-});
-onShow(() => {
-  console.log("App Show");
-});
-onHide(() => {
-  console.log("App Hide");
+  const userStore = useUserStore();
+  userStore.checkLoginStatus();
 });
 </script>
-<style></style>
+
+<style lang="scss">
+@import 'uview-plus/index.scss';
+
+/* 全局通用样式 */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-container {
+  min-height: 100vh;
+  background-color: #F0F6FF;
+}
+</style>
