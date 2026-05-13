@@ -65,8 +65,7 @@
       type="primary"
       text="确认进入"
       shape="circle"
-      class="submit-btn"
-      :customStyle="{ marginTop: 'var(--space-2xl)' }"
+      class="submit-btn confirm-btn"
       @click="handleConfirm"
       :disabled="!selectedRole"
     />
@@ -184,5 +183,9 @@ function handleConfirm() {
 
 .bind-input {
   margin-top: var(--space-sm);
+}
+
+.confirm-btn {
+  margin-top: var(--space-2xl);
 }
 </style>

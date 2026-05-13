@@ -80,38 +80,40 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .detail-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 30rpx;
+  background: var(--color-bg);
+  padding: var(--space-lg);
 }
 
 .status-card {
   text-align: center;
-  padding: 40rpx;
+  padding: var(--space-xl);
   border-radius: 16rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: var(--space-lg);
 }
 
-.status-card.approved { background: #E8F5E9; }
-.status-card.pending { background: #FFF3E0; }
+.status-card.approved { background: var(--color-status-success-bg); }
+.status-card.pending { background: var(--color-status-warning-bg); }
+.status-card.rejected { background: var(--color-status-error-bg); }
+.status-card.expired { background: var(--color-bg-subtle); }
 
 .status-icon { font-size: 60rpx; display: block; }
-.status-text { font-size: 32rpx; font-weight: bold; display: block; margin-top: 10rpx; }
+.status-text { font-size: var(--font-md); font-weight: bold; display: block; margin-top: var(--space-xs); }
 
 .info-card {
-  background: #fff;
+  background: var(--color-bg-card);
   border-radius: 16rpx;
-  padding: 24rpx;
+  padding: var(--space-md);
 }
 
 .info-row {
   display: flex;
   justify-content: space-between;
-  padding: 16rpx 0;
-  border-bottom: 1rpx solid #f5f5f5;
+  padding: var(--space-sm) 0;
+  border-bottom: 1rpx solid var(--color-bg-subtle);
 }
 
-.info-label { font-size: 28rpx; color: #999; }
-.info-value { font-size: 28rpx; color: #333; }
+.info-label { font-size: var(--font-base); color: var(--color-text-tertiary); }
+.info-value { font-size: var(--font-base); color: var(--color-text-primary); }
 
 .qr-section {
   text-align: center;
@@ -122,39 +124,39 @@ onMounted(async () => {
   font-size: 30rpx;
   font-weight: bold;
   display: block;
-  margin-bottom: 30rpx;
+  margin-bottom: var(--space-lg);
 }
 
 .qr-code-wrap {
   display: inline-block;
-  background: #fff;
-  padding: 30rpx;
+  background: var(--color-bg-card);
+  padding: var(--space-lg);
   border-radius: 16rpx;
 }
 
 .qr-placeholder {
   width: 280rpx;
   height: 280rpx;
-  background: #f5f5f5;
+  background: var(--color-bg-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2rpx dashed #ccc;
-  border-radius: 8rpx;
+  border: 2rpx dashed var(--color-text-tertiary);
+  border-radius: var(--space-xs);
 }
 
 .qr-token-text {
   font-size: 20rpx;
-  color: #999;
+  color: var(--color-text-tertiary);
   text-align: center;
   word-break: break-all;
-  padding: 20rpx;
+  padding: var(--space-sm);
 }
 
 .qr-tip {
-  font-size: 24rpx;
-  color: #999;
+  font-size: var(--font-sm);
+  color: var(--color-text-tertiary);
   display: block;
-  margin-top: 20rpx;
+  margin-top: var(--space-sm);
 }
 </style>
