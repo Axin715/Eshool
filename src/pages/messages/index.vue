@@ -4,12 +4,12 @@
       :list="tabs"
       :current="currentTab"
       @change="onTabChange"
-      :activeStyle="{ color: '#4A90D9' }"
-      lineColor="#4A90D9"
+      :activeStyle="{ color: 'var(--color-primary)' }"
+      lineColor="#3B82F6"
     />
 
     <view class="message-list">
-      <view class="message-item" v-for="msg in displayMessages" :key="msg.id" @click="readMessage(msg)">
+      <view class="message-item pressable" v-for="msg in displayMessages" :key="msg.id" @click="readMessage(msg)">
         <view class="msg-left">
           <view class="msg-dot" v-if="!msg.read"></view>
           <text class="msg-title">{{ msg.title }}</text>
@@ -79,44 +79,44 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .messages-page {
   min-height: 100vh;
-  background: #F0F6FF;
+  background: var(--color-bg);
 }
 
 .message-list {
-  padding: 20rpx 30rpx;
+  padding: var(--space-sm) var(--space-lg);
 }
 
 .message-item {
-  background: #fff;
-  border-radius: 12rpx;
-  padding: 24rpx;
-  margin-bottom: 16rpx;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .msg-left {
   display: flex;
   align-items: center;
-  gap: 10rpx;
-  margin-bottom: 10rpx;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
 }
 
 .msg-dot {
   width: 14rpx;
   height: 14rpx;
   border-radius: 50%;
-  background: #FF6B6B;
+  background: var(--color-error);
   flex-shrink: 0;
 }
 
 .msg-title {
-  font-size: 30rpx;
+  font-size: var(--font-md);
   font-weight: bold;
-  color: #333;
+  color: var(--color-text-primary);
 }
 
 .msg-content {
-  font-size: 26rpx;
-  color: #666;
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -124,9 +124,9 @@ onMounted(async () => {
 }
 
 .msg-date {
-  font-size: 22rpx;
-  color: #999;
-  margin-top: 8rpx;
+  font-size: var(--font-xs);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-xs);
   display: block;
 }
 </style>

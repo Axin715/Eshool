@@ -14,10 +14,10 @@
     <u-swiper :list="bannerList" height="300" radius="12" :autoplay="true" />
 
     <view class="quick-actions">
-      <view class="action-item" v-for="item in quickActions" :key="item.path"
+      <view class="action-item pressable" v-for="item in quickActions" :key="item.path"
             @click="navigateTo(item.path)">
-        <view class="action-icon" :style="{ background: item.color }">
-          <text>{{ item.icon }}</text>
+        <view class="action-icon" :style="{ background: item.bgColor }">
+          <u-icon :name="item.icon" size="28" color="#fff" />
         </view>
         <text class="action-text">{{ item.name }}</text>
       </view>
@@ -25,11 +25,14 @@
 
     <view class="section-card">
       <view class="section-header">
-        <text class="section-title">📢 最新公告</text>
+        <view class="section-title-wrap">
+          <u-icon name="bell-fill" size="20" color="var(--color-primary)" />
+          <text class="section-title">最新公告</text>
+        </view>
         <text class="section-more" @click="viewAllNews">查看全部 ></text>
       </view>
       <view class="news-list">
-        <view class="news-item" v-for="item in newsList" :key="item.id">
+        <view class="news-item pressable" v-for="item in newsList" :key="item.id">
           <text class="news-title">{{ item.title }}</text>
           <text class="news-date">{{ item.createdAt }}</text>
         </view>
@@ -61,10 +64,10 @@ const bannerList = [
 ];
 
 const quickActions = [
-  { name: '请假申请', icon: '📝', path: '/pages/features/leave/create', color: '#4A90D9' },
-  { name: '访校申请', icon: '🎫', path: '/pages/features/visit/create', color: '#5BA0F5' },
-  { name: '心理校园', icon: '💚', path: '/pages/features/psychology/create', color: '#4CAF50' },
-  { name: '饭卡充值', icon: '💳', path: '/pages/features/meal/recharge', color: '#FFB347' },
+  { name: '请假申请', icon: 'edit-pen-fill', path: '/pages/features/leave/create', bgColor: '#3B82F6' },
+  { name: '访校申请', icon: 'coupon-fill', path: '/pages/features/visit/create', bgColor: '#6366F1' },
+  { name: '心理校园', icon: 'heart-fill', path: '/pages/features/psychology/create', bgColor: '#059669' },
+  { name: '饭卡充值', icon: 'rmb-circle-fill', path: '/pages/features/meal/recharge', bgColor: '#F59E0B' },
 ];
 
 async function loadNews() {
@@ -86,35 +89,35 @@ onMounted(() => {
 <style lang="scss" scoped>
 .home-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding-bottom: 20rpx;
+  background: var(--color-bg);
+  padding-bottom: var(--space-sm);
 }
 
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 30rpx 20rpx;
-  background: #4A90D9;
+  padding: var(--space-lg) var(--space-lg) var(--space-sm);
+  background: var(--color-primary);
 }
 
 .greeting-text {
-  font-size: 26rpx;
+  font-size: var(--font-sm);
   color: rgba(255,255,255,0.8);
 }
 
 .user-name {
-  font-size: 34rpx;
+  font-size: var(--font-lg);
   font-weight: bold;
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 .quick-actions {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20rpx;
-  padding: 20rpx 30rpx;
-  margin-top: -20rpx;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  margin-top: var(--space-md);
 }
 
 .action-item {
@@ -126,58 +129,63 @@ onMounted(() => {
 .action-icon {
   width: 90rpx;
   height: 90rpx;
-  border-radius: 20rpx;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 40rpx;
-  background: #fff;
-  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-md);
 }
 
 .action-text {
-  font-size: 22rpx;
-  color: #666;
-  margin-top: 8rpx;
+  font-size: var(--font-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-xs);
 }
 
 .section-card {
-  background: #fff;
-  border-radius: 16rpx;
-  margin: 0 30rpx 20rpx;
-  padding: 24rpx;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  margin: 0 var(--space-lg) var(--space-sm);
+  padding: var(--space-md);
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16rpx;
+  margin-bottom: var(--space-sm);
+}
+
+.section-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .section-title {
-  font-size: 30rpx;
+  font-size: var(--font-md);
   font-weight: bold;
+  color: var(--color-text-primary);
 }
 
 .section-more {
-  font-size: 24rpx;
-  color: #4A90D9;
+  font-size: var(--font-sm);
+  color: var(--color-primary);
 }
 
 .news-item {
-  padding: 16rpx 0;
-  border-bottom: 1rpx solid #f0f0f0;
+  padding: var(--space-sm) 0;
+  border-bottom: 1rpx solid var(--color-border-light);
 }
 
 .news-title {
-  font-size: 28rpx;
-  color: #333;
+  font-size: var(--font-base);
+  color: var(--color-text-primary);
 }
 
 .news-date {
-  font-size: 22rpx;
-  color: #999;
-  margin-top: 6rpx;
+  font-size: var(--font-xs);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-xs);
 }
 </style>

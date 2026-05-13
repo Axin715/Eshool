@@ -16,20 +16,20 @@
       <text class="section-label">当前身份</text>
       <view class="identity-switch">
         <view
-          class="identity-option"
+          class="identity-option pressable"
           :class="{ active: userStore.isParent }"
           @click="switchToParent"
         >
-          <text class="identity-icon">👨‍👩‍👧</text>
+          <u-icon name="account-fill" size="24" />
           <text>家长</text>
         </view>
         <view
-          class="identity-option"
+          class="identity-option pressable"
           :class="{ active: userStore.isTeacher }"
           @click="switchToTeacher"
           v-if="userStore.user?.roles.includes('teacher')"
         >
-          <text class="identity-icon">👩‍🏫</text>
+          <u-icon name="account" size="24" />
           <text>{{ userStore.isHeadTeacher ? '班主任' : '老师' }}</text>
         </view>
       </view>
@@ -52,13 +52,16 @@
     </view>
 
     <view class="section-card">
-      <view class="menu-item" v-for="item in menuItems" :key="item.title" @click="handleMenu(item)">
-        <text>{{ item.icon }} {{ item.title }}</text>
-        <u-icon name="arrow-right" color="#ccc" size="16" />
+      <view class="menu-item pressable" v-for="item in menuItems" :key="item.title" @click="handleMenu(item)">
+        <view class="menu-left">
+          <u-icon :name="item.icon" size="20" color="var(--color-primary)" />
+          <text>{{ item.title }}</text>
+        </view>
+        <u-icon name="arrow-right" color="var(--color-text-tertiary)" size="16" />
       </view>
     </view>
 
-    <u-button text="退出登录" type="error" :customStyle="{ margin: '30rpx' }" @click="handleLogout" />
+    <u-button text="退出登录" type="error" class="submit-btn" @click="handleLogout" />
   </view>
 </template>
 
@@ -73,11 +76,11 @@ const hasMultipleRoles = computed(() =>
 );
 
 const menuItems = [
-  { title: '我的请假记录', icon: '📝', type: 'leave' },
-  { title: '我的访校记录', icon: '🎫', type: 'visit' },
-  { title: '我的预约记录', icon: '💚', type: 'appointment' },
-  { title: '充值记录', icon: '💳', type: 'meal' },
-  { title: '设置', icon: '⚙️', type: 'settings' },
+  { title: '我的请假记录', icon: 'edit-pen-fill', type: 'leave' },
+  { title: '我的访校记录', icon: 'coupon-fill', type: 'visit' },
+  { title: '我的预约记录', icon: 'heart-fill', type: 'appointment' },
+  { title: '充值记录', icon: 'rmb-circle-fill', type: 'meal' },
+  { title: '设置', icon: 'setting-fill', type: 'settings' },
 ];
 
 function switchToParent() {
@@ -110,90 +113,94 @@ function handleLogout() {
 <style lang="scss" scoped>
 .profile-page {
   min-height: 100vh;
-  background: #F0F6FF;
+  background: var(--color-bg);
 }
 
 .user-card {
-  background: linear-gradient(135deg, #4A90D9, #5BA0F5);
-  padding: 40rpx 30rpx;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  padding: var(--space-xl) var(--space-lg);
   display: flex;
   align-items: center;
-  gap: 20rpx;
+  gap: var(--space-sm);
 }
 
 .user-name {
-  font-size: 36rpx;
+  font-size: var(--font-lg);
   font-weight: bold;
-  color: #fff;
+  color: var(--color-text-inverse);
   display: block;
 }
 
 .user-roles {
   display: flex;
-  gap: 10rpx;
-  margin-top: 10rpx;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
 }
 
 .section-card {
-  background: #fff;
-  border-radius: 16rpx;
-  margin: 20rpx 30rpx;
-  padding: 24rpx;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  margin: var(--space-sm) var(--space-lg);
+  padding: var(--space-md);
 }
 
 .section-label {
-  font-size: 26rpx;
-  color: #999;
-  margin-bottom: 16rpx;
+  font-size: var(--font-sm);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-sm);
   display: block;
 }
 
 .identity-switch {
   display: flex;
-  gap: 20rpx;
+  gap: var(--space-sm);
 }
 
 .identity-option {
   flex: 1;
   text-align: center;
-  padding: 20rpx;
-  border-radius: 12rpx;
-  background: #f5f5f5;
-  font-size: 28rpx;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-subtle);
+  font-size: var(--font-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .identity-option.active {
-  background: #F0F6FF;
-  border: 2rpx solid #4A90D9;
-  color: #4A90D9;
-}
-
-.identity-icon {
-  display: block;
-  font-size: 40rpx;
-  margin-bottom: 6rpx;
+  background: var(--color-primary-light);
+  border: 2rpx solid var(--color-primary);
+  color: var(--color-primary);
 }
 
 .child-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16rpx 0;
-  border-bottom: 1rpx solid #f5f5f5;
-  font-size: 28rpx;
+  padding: var(--space-sm) 0;
+  border-bottom: 1rpx solid var(--color-border-light);
+  font-size: var(--font-base);
 }
 
 .child-class {
-  color: #999;
-  font-size: 24rpx;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-sm);
 }
 
 .menu-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20rpx 0;
-  border-bottom: 1rpx solid #f5f5f5;
-  font-size: 28rpx;
+  padding: var(--space-sm) 0;
+  border-bottom: 1rpx solid var(--color-border-light);
+  font-size: var(--font-base);
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 </style>

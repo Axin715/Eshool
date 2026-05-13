@@ -2,7 +2,7 @@
   <view class="login-page">
     <view class="login-header">
       <view class="logo-area">
-        <text class="logo-icon">🏫</text>
+        <u-icon name="home-fill" size="56" color="#fff" />
         <text class="app-name">数字校园</text>
         <text class="app-desc">连接家校 · 关爱成长</text>
       </view>
@@ -14,7 +14,7 @@
         icon="weixin-fill"
         text="微信授权登录"
         shape="circle"
-        :customStyle="{ marginBottom: '20rpx', height: '96rpx' }"
+        class="login-btn"
         @click="handleWechatLogin"
       />
 
@@ -59,7 +59,7 @@
           type="primary"
           text="登录"
           shape="circle"
-          :customStyle="{ height: '96rpx' }"
+          class="login-btn"
           @click="handlePhoneLogin"
         />
       </view>
@@ -104,7 +104,7 @@ async function handlePhoneLogin() {
 <style lang="scss" scoped>
 .login-page {
   min-height: 100vh;
-  background: linear-gradient(180deg, #4A90D9 0%, #7AB8F5 50%, #F0F6FF 100%);
+  background: linear-gradient(180deg, var(--color-primary) 0%, #60A5FA 50%, var(--color-bg) 100%);
   display: flex;
   flex-direction: column;
   padding: 0 60rpx;
@@ -125,19 +125,19 @@ async function handlePhoneLogin() {
 
 .logo-icon {
   font-size: 100rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: var(--space-sm);
 }
 
 .app-name {
   font-size: 48rpx;
   font-weight: bold;
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 .app-desc {
   font-size: 28rpx;
   color: rgba(255, 255, 255, 0.8);
-  margin-top: 10rpx;
+  margin-top: var(--space-xs);
 }
 
 .login-body {
@@ -145,13 +145,13 @@ async function handlePhoneLogin() {
 }
 
 .phone-login {
-  margin-top: 40rpx;
+  margin-top: var(--space-xl);
 }
 
 .divider {
   display: flex;
   align-items: center;
-  margin: 30rpx 0;
+  margin: var(--space-lg) 0;
 }
 
 .divider-line {
@@ -161,8 +161,13 @@ async function handlePhoneLogin() {
 }
 
 .divider-text {
-  padding: 0 20rpx;
+  padding: 0 var(--space-sm);
   font-size: 24rpx;
   color: rgba(255, 255, 255, 0.8);
+}
+
+.login-btn {
+  height: 96rpx;
+  margin-bottom: var(--space-sm);
 }
 </style>

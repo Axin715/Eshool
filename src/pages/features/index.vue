@@ -1,10 +1,10 @@
 <template>
   <view class="features-page">
     <view class="feature-grid">
-      <view class="feature-card" v-for="item in visibleFeatures" :key="item.path"
+      <view class="feature-card pressable" v-for="item in visibleFeatures" :key="item.path"
             @click="navigateTo(item.path)">
         <view class="feature-icon-wrap" :style="{ background: item.bgColor }">
-          <text class="feature-icon">{{ item.icon }}</text>
+          <u-icon :name="item.icon" size="28" :color="item.iconColor" />
         </view>
         <text class="feature-name">{{ item.name }}</text>
         <text class="feature-desc">{{ item.desc }}</text>
@@ -20,11 +20,11 @@ import { useUserStore } from '@/stores/user';
 const userStore = useUserStore();
 
 const allFeatures = [
-  { name: '请假申请', desc: '为学生提交请假', icon: '📝', path: '/pages/features/leave/create', bgColor: '#E8F4FD', roles: ['parent', 'teacher'] },
-  { name: '访校申请', desc: '申请进入校园', icon: '🎫', path: '/pages/features/visit/create', bgColor: '#E0F2E9', roles: ['parent', 'teacher'] },
-  { name: '心理校园', desc: '预约校医或咨询', icon: '💚', path: '/pages/features/psychology/create', bgColor: '#F0FAF5', roles: ['parent', 'teacher'] },
-  { name: '饭卡充值', desc: '为学生饭卡充值', icon: '💳', path: '/pages/features/meal/recharge', bgColor: '#FFF3E0', roles: ['parent', 'teacher'] },
-  { name: '值班排班', desc: '班级家长值班安排', icon: '📅', path: '/pages/features/duty/index', bgColor: '#F3E8FF', roles: ['head_teacher'] },
+  { name: '请假申请', desc: '为学生提交请假', icon: 'edit-pen-fill', path: '/pages/features/leave/create', bgColor: '#EFF6FF', iconColor: '#3B82F6', roles: ['parent', 'teacher'] },
+  { name: '访校申请', desc: '申请进入校园', icon: 'coupon-fill', path: '/pages/features/visit/create', bgColor: '#EEF2FF', iconColor: '#6366F1', roles: ['parent', 'teacher'] },
+  { name: '心理校园', desc: '预约校医或咨询', icon: 'heart-fill', path: '/pages/features/psychology/create', bgColor: '#ECFDF5', iconColor: '#059669', roles: ['parent', 'teacher'] },
+  { name: '饭卡充值', desc: '为学生饭卡充值', icon: 'rmb-circle-fill', path: '/pages/features/meal/recharge', bgColor: '#FFFBEB', iconColor: '#D97706', roles: ['parent', 'teacher'] },
+  { name: '值班排班', desc: '班级家长值班安排', icon: 'calendar-fill', path: '/pages/features/duty/index', bgColor: '#F5F3FF', iconColor: '#8B5CF6', roles: ['head_teacher'] },
 ];
 
 const visibleFeatures = computed(() => {
@@ -43,20 +43,20 @@ function navigateTo(path: string) {
 <style lang="scss" scoped>
 .features-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 30rpx;
+  background: var(--color-bg);
+  padding: var(--space-lg);
 }
 
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20rpx;
+  gap: var(--space-sm);
 }
 
 .feature-card {
-  background: #fff;
-  border-radius: 16rpx;
-  padding: 30rpx;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,26 +66,22 @@ function navigateTo(path: string) {
 .feature-icon-wrap {
   width: 100rpx;
   height: 100rpx;
-  border-radius: 24rpx;
+  border-radius: var(--radius-xl);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16rpx;
-}
-
-.feature-icon {
-  font-size: 48rpx;
+  margin-bottom: var(--space-sm);
 }
 
 .feature-name {
-  font-size: 28rpx;
+  font-size: var(--font-base);
   font-weight: bold;
-  color: #333;
+  color: var(--color-text-primary);
 }
 
 .feature-desc {
-  font-size: 22rpx;
-  color: #999;
-  margin-top: 6rpx;
+  font-size: var(--font-xs);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-xs);
 }
 </style>

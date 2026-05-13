@@ -7,20 +7,20 @@
 
     <view class="role-select">
       <view
-        class="role-card"
+        class="role-card pressable"
         :class="{ active: selectedRole === 'parent' }"
         @click="selectedRole = 'parent'"
       >
-        <text class="role-icon">👨‍👩‍👧</text>
+        <u-icon name="account-fill" size="32" />
         <text class="role-name">我是家长</text>
       </view>
       <view
-        class="role-card"
+        class="role-card pressable"
         :class="{ active: selectedRole === 'teacher' }"
         @click="selectedRole = 'teacher'"
         v-if="userStore.user?.roles.includes('teacher')"
       >
-        <text class="role-icon">👩‍🏫</text>
+        <u-icon name="account" size="32" />
         <text class="role-name">我是老师</text>
       </view>
     </view>
@@ -29,21 +29,21 @@
       <text class="section-title">关联您的孩子</text>
       <view class="student-list" v-if="userStore.students.length">
         <view
-          class="student-item"
+          class="student-item pressable"
           v-for="s in userStore.students"
           :key="s.id"
           :class="{ selected: selectedStudentIds.includes(s.id) }"
           @click="toggleStudent(s.id)"
         >
           <text>{{ s.name }} - {{ s.className }}</text>
-          <u-icon v-if="selectedStudentIds.includes(s.id)" name="checkbox-mark" color="#4A90D9" />
+          <u-icon v-if="selectedStudentIds.includes(s.id)" name="checkbox-mark" color="var(--color-primary)" />
         </view>
       </view>
       <u-input
         v-model="studentCode"
         placeholder="输入学生编号绑定"
         border="surround"
-        :customStyle="{ marginTop: '20rpx' }"
+        class="bind-input"
       />
     </view>
 
@@ -51,7 +51,7 @@
       <text class="section-title">任教班级</text>
       <view class="class-list" v-if="userStore.teacherClasses.length">
         <view
-          class="class-item"
+          class="class-item pressable"
           v-for="c in userStore.teacherClasses"
           :key="c.id"
         >
@@ -65,7 +65,8 @@
       type="primary"
       text="确认进入"
       shape="circle"
-      :customStyle="{ marginTop: '60rpx', height: '96rpx' }"
+      class="submit-btn"
+      :customStyle="{ marginTop: 'var(--space-2xl)' }"
       @click="handleConfirm"
       :disabled="!selectedRole"
     />
@@ -101,47 +102,47 @@ function handleConfirm() {
 <style lang="scss" scoped>
 .bind-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 40rpx 40rpx;
+  background: var(--color-bg);
+  padding: var(--space-xl) var(--space-xl);
 }
 
 .bind-header {
   text-align: center;
-  padding: 60rpx 0;
+  padding: var(--space-2xl) 0;
 }
 
 .bind-title {
   font-size: 40rpx;
   font-weight: bold;
-  color: #333;
+  color: var(--color-text-primary);
   display: block;
 }
 
 .bind-desc {
   font-size: 26rpx;
-  color: #999;
-  margin-top: 10rpx;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-xs);
   display: block;
 }
 
 .role-select {
   display: flex;
-  gap: 30rpx;
-  margin: 40rpx 0;
+  gap: var(--space-lg);
+  margin: var(--space-xl) 0;
 }
 
 .role-card {
   flex: 1;
-  background: #fff;
+  background: var(--color-bg-card);
   border-radius: 16rpx;
-  padding: 40rpx;
+  padding: var(--space-xl);
   text-align: center;
-  border: 2rpx solid #e0e0e0;
+  border: 2rpx solid var(--color-border);
 }
 
 .role-card.active {
-  border-color: #4A90D9;
-  background: #F0F6FF;
+  border-color: var(--color-primary);
+  background: var(--color-bg);
 }
 
 .role-icon {
@@ -151,23 +152,23 @@ function handleConfirm() {
 
 .role-name {
   font-size: 28rpx;
-  color: #333;
-  margin-top: 10rpx;
+  color: var(--color-text-primary);
+  margin-top: var(--space-xs);
   display: block;
 }
 
 .bind-form {
-  background: #fff;
+  background: var(--color-bg-card);
   border-radius: 16rpx;
-  padding: 30rpx;
-  margin-top: 20rpx;
+  padding: var(--space-lg);
+  margin-top: var(--space-sm);
 }
 
 .section-title {
   font-size: 30rpx;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 20rpx;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
   display: block;
 }
 
@@ -176,8 +177,12 @@ function handleConfirm() {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20rpx;
-  border-bottom: 1rpx solid #f0f0f0;
+  padding: var(--space-sm);
+  border-bottom: 1rpx solid var(--color-border-light);
   font-size: 28rpx;
+}
+
+.bind-input {
+  margin-top: var(--space-sm);
 }
 </style>

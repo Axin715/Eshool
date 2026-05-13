@@ -2,9 +2,9 @@
   <view class="leave-page">
     <u-form :model="form" ref="formRef" labelWidth="140">
       <u-form-item label="请假学生" required>
-        <view class="student-picker" @click="showStudentPicker = true">
+        <view class="student-picker pressable" @click="showStudentPicker = true">
           <text>{{ form.studentName || '请选择学生' }}</text>
-          <u-icon name="arrow-down" size="16" color="#999" />
+          <u-icon name="arrow-down" size="16" color="var(--color-text-tertiary)" />
         </view>
       </u-form-item>
 
@@ -39,16 +39,16 @@
     </u-form>
 
     <u-button type="primary" text="提交申请" shape="circle"
-              :customStyle="{ margin: '40rpx 30rpx', height: '96rpx' }"
+              class="submit-btn"
               @click="handleSubmit" />
 
     <u-popup :show="showStudentPicker" mode="bottom" @close="showStudentPicker = false">
       <view class="picker-content">
         <view class="picker-title">选择学生</view>
-        <view class="picker-item" v-for="s in studentList" :key="s.id"
+        <view class="picker-item pressable" v-for="s in studentList" :key="s.id"
               @click="selectStudent(s)">
           <text>{{ s.name }} - {{ s.className }}</text>
-          <u-icon v-if="form.studentId === s.id" name="checkbox-mark" color="#4A90D9" />
+          <u-icon v-if="form.studentId === s.id" name="checkbox-mark" color="var(--color-primary)" />
         </view>
       </view>
     </u-popup>
@@ -116,37 +116,37 @@ loadStudents();
 <style lang="scss" scoped>
 .leave-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 30rpx;
+  background: var(--color-bg);
+  padding: var(--space-lg);
 }
 
 .student-picker {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16rpx 20rpx;
-  border: 1rpx solid #e0e0e0;
-  border-radius: 8rpx;
-  font-size: 28rpx;
+  padding: var(--space-sm) var(--space-sm);
+  border: 1rpx solid var(--color-border);
+  border-radius: var(--space-xs);
+  font-size: var(--font-base);
 }
 
 .picker-content {
-  padding: 30rpx;
+  padding: var(--space-lg);
 }
 
 .picker-title {
-  font-size: 32rpx;
+  font-size: var(--font-md);
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20rpx;
+  margin-bottom: var(--space-sm);
 }
 
 .picker-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24rpx 0;
-  border-bottom: 1rpx solid #f0f0f0;
-  font-size: 28rpx;
+  padding: var(--space-md) 0;
+  border-bottom: 1rpx solid var(--color-border-light);
+  font-size: var(--font-base);
 }
 </style>

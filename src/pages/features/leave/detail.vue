@@ -1,7 +1,12 @@
 <template>
   <view class="detail-page" v-if="detail">
     <view class="status-card" :class="detail.status">
-      <text class="status-text">{{ statusText }}</text>
+      <view class="status-header">
+        <u-icon v-if="detail.status === 'approved'" name="checkmark-circle-fill" size="24" color="var(--color-accent)" />
+        <u-icon v-else-if="detail.status === 'pending'" name="hourglass-half-fill" size="24" color="var(--color-warning)" />
+        <u-icon v-else-if="detail.status === 'rejected'" name="close-circle-fill" size="24" color="var(--color-error)" />
+        <text class="status-text">{{ statusText }}</text>
+      </view>
     </view>
 
     <view class="info-card">
@@ -45,36 +50,43 @@ const statusText = computed(() => {
 <style lang="scss" scoped>
 .detail-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 30rpx;
+  background: var(--color-bg);
+  padding: var(--space-lg);
 }
 
 .status-card {
   text-align: center;
-  padding: 40rpx;
+  padding: var(--space-xl);
   border-radius: 16rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: var(--space-lg);
 }
 
-.status-card.approved { background: #E8F5E9; }
-.status-card.pending { background: #FFF3E0; }
-.status-card.rejected { background: #FFEBEE; }
+.status-card.approved { background: var(--color-status-success-bg); }
+.status-card.pending { background: var(--color-status-warning-bg); }
+.status-card.rejected { background: var(--color-status-error-bg); }
 
-.status-text { font-size: 32rpx; font-weight: bold; }
+.status-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+}
+
+.status-text { font-size: var(--font-md); font-weight: bold; }
 
 .info-card {
-  background: #fff;
+  background: var(--color-bg-card);
   border-radius: 16rpx;
-  padding: 24rpx;
+  padding: var(--space-md);
 }
 
 .info-row {
   display: flex;
   justify-content: space-between;
-  padding: 16rpx 0;
-  border-bottom: 1rpx solid #f5f5f5;
+  padding: var(--space-sm) 0;
+  border-bottom: 1rpx solid var(--color-bg-subtle);
 }
 
-.info-label { font-size: 28rpx; color: #999; }
-.info-value { font-size: 28rpx; color: #333; text-align: right; flex: 1; }
+.info-label { font-size: var(--font-base); color: var(--color-text-tertiary); }
+.info-value { font-size: var(--font-base); color: var(--color-text-primary); text-align: right; flex: 1; }
 </style>

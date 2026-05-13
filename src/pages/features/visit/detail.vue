@@ -1,7 +1,7 @@
 <template>
   <view class="detail-page" v-if="detail">
     <view class="status-card" :class="detail.status">
-      <text class="status-icon">{{ statusIcon }}</text>
+      <u-icon :name="statusIconName" size="36" :color="statusColor" />
       <text class="status-text">{{ statusText }}</text>
     </view>
 
@@ -45,11 +45,19 @@ import type { VisitRequest } from '@/types';
 const userStore = useUserStore();
 const detail = ref<VisitRequest | null>(null);
 
-const statusIcon = computed(() => {
+const statusIconName = computed(() => {
   const icons: Record<string, string> = {
-    approved: '✅', pending: '⏳', rejected: '❌', expired: '⏰',
+    approved: 'checkmark-circle-fill', pending: 'hourglass-half-fill',
+    rejected: 'close-circle-fill', expired: 'clock-fill',
   };
   return icons[detail.value?.status || ''] || '';
+});
+const statusColor = computed(() => {
+  const colors: Record<string, string> = {
+    approved: 'var(--color-accent)', pending: 'var(--color-warning)',
+    rejected: 'var(--color-error)', expired: 'var(--color-text-tertiary)',
+  };
+  return colors[detail.value?.status || ''] || '';
 });
 
 const statusText = computed(() => {

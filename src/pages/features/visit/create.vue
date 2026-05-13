@@ -32,12 +32,12 @@
     </u-form>
 
     <u-button type="primary" text="提交申请" shape="circle"
-              :customStyle="{ margin: '40rpx 30rpx', height: '96rpx' }"
+              class="submit-btn"
               @click="handleSubmit" />
 
     <view class="history-section" v-if="historyList.length">
       <text class="history-title">申请记录</text>
-      <view class="history-item" v-for="item in historyList" :key="item.id"
+      <view class="history-item pressable" v-for="item in historyList" :key="item.id"
             @click="viewDetail(item)">
         <view class="h-left">
           <text class="h-type">{{ item.visitType === 'short' ? '短期' : '长期' }}</text>
@@ -102,27 +102,27 @@ loadHistory();
 <style lang="scss" scoped>
 .visit-page {
   min-height: 100vh;
-  background: #F0F6FF;
-  padding: 30rpx;
+  background: var(--color-bg);
+  padding: var(--space-lg);
 }
 
 .history-section {
-  margin-top: 40rpx;
+  margin-top: var(--space-xl);
 }
 
 .history-title {
   font-size: 30rpx;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 20rpx;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
   display: block;
 }
 
 .history-item {
-  background: #fff;
-  border-radius: 12rpx;
-  padding: 24rpx;
-  margin-bottom: 16rpx;
+  background: var(--color-bg-card);
+  border-radius: var(--space-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -131,16 +131,16 @@ loadHistory();
 .h-left {
   display: flex;
   flex-direction: column;
-  gap: 6rpx;
+  gap: var(--space-xs);
 }
 
 .h-type {
-  font-size: 28rpx;
+  font-size: var(--font-base);
   font-weight: bold;
 }
 
 .h-date {
-  font-size: 24rpx;
-  color: #999;
+  font-size: var(--font-sm);
+  color: var(--color-text-tertiary);
 }
 </style>
