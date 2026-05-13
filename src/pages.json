@@ -85,6 +85,12 @@
       "style": {
         "navigationBarTitleText": "编辑排班"
       }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
     }
   ],
   "globalStyle": {
