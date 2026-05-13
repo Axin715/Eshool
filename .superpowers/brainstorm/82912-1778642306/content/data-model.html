@@ -1,0 +1,47 @@
+<h2>核心数据关系模型</h2>
+<p class="subtitle">家长、学生、老师、班级之间的关系决定了权限和数据流</p>
+
+<div style="background:#f5f7fa;padding:20px;border-radius:8px;text-align:center;margin-bottom:20px;">
+  <div style="display:flex;justify-content:center;align-items:center;gap:30px;flex-wrap:wrap;">
+    <div style="background:#fff;border:2px solid #4A90D9;border-radius:8px;padding:16px;min-width:100px;">
+      <div style="font-size:28px;">👨‍👩‍👧</div>
+      <div style="font-weight:bold;font-size:14px;">家长</div>
+      <div style="font-size:10px;color:#666;">可关联 1-N 个学生</div>
+    </div>
+    <div style="font-size:24px;color:#4A90D9;">→</div>
+    <div style="background:#fff;border:2px solid #FFB347;border-radius:8px;padding:16px;min-width:100px;">
+      <div style="font-size:28px;">👦</div>
+      <div style="font-weight:bold;font-size:14px;">学生</div>
+      <div style="font-size:10px;color:#666;">属于 1 个班级</div>
+    </div>
+    <div style="font-size:24px;color:#FFB347;">→</div>
+    <div style="background:#fff;border:2px solid #4CAF50;border-radius:8px;padding:16px;min-width:100px;">
+      <div style="font-size:28px;">🏫</div>
+      <div style="font-weight:bold;font-size:14px;">班级</div>
+      <div style="font-size:10px;color:#666;">1 位班主任</div>
+    </div>
+    <div style="font-size:24px;color:#4CAF50;">←</div>
+    <div style="background:#fff;border:2px solid #9B59B6;border-radius:8px;padding:16px;min-width:100px;">
+      <div style="font-size:28px;">👩‍🏫</div>
+      <div style="font-weight:bold;font-size:14px;">老师</div>
+      <div style="font-size:10px;color:#666;">可任教多个班级</div>
+    </div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="model-a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>家长绑定学生（推荐）</h3>
+      <p>家长账号通过<strong>学生ID/邀请码</strong>关联学生。老师账号由学校分配，关联任教班级。班主任是老师身份的<strong>标记字段</strong> (is_class_teacher + class_id)。</p>
+    </div>
+  </div>
+  <div class="option" data-choice="model-b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>班级邀请码制</h3>
+      <p>每个班级生成唯一<strong>邀请码</strong>，家长和老师都通过邀请码加入班级。班主任由首个加入且被标记为班主任的账号担任。更灵活但管理链路较长。</p>
+    </div>
+  </div>
+</div>

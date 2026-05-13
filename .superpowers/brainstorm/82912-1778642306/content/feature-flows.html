@@ -1,0 +1,61 @@
+<h2>核心功能流程设计</h2>
+<p class="subtitle">5 个核心功能的操作流程与关键状态</p>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-body">
+      <h3>📝 请假申请</h3>
+      <p style="font-size:12px;line-height:1.6;">
+        <strong>操作人：</strong>家长（为自己孩子）/ 老师（为任教班级学生）<br>
+        <strong>流程：</strong>选择学生 → 选择请假类型（事假/病假/其他）→ 选择日期时段 → 填写原因 → 提交申请 → 等待审批<br>
+        <strong>状态：</strong>待审批 → 已批准 / 已拒绝<br>
+        <strong>关键点：</strong>老师替学生请假时需要先选择班级再选择学生
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3>🎫 访校申请</h3>
+      <p style="font-size:12px;line-height:1.6;">
+        <strong>操作人：</strong>家长 / 老师<br>
+        <strong>类型：</strong>短期访校（单次）+ 长期访校（多次有效）<br>
+        <strong>流程：</strong>选择类型 → 填写访校事由 → 选择日期/时段 → 提交申请 → 审批通过 → 生成访校二维码<br>
+        <strong>关键点：</strong>进校时展示二维码由门卫扫码验证；长期访校码有有效期
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3>💚 心理校园</h3>
+      <p style="font-size:12px;line-height:1.6;">
+        <strong>功能：</strong>预约校医 / 预约心理咨询<br>
+        <strong>流程：</strong>选择预约类型（校医/心理咨询）→ 查看可预约时段 → 填写简要描述 → 提交预约 → 确认<br>
+        <strong>关键点：</strong>展示已预约记录；支持取消预约；每个时段有人数限制
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3>💳 饭卡充值</h3>
+      <p style="font-size:12px;line-height:1.6;">
+        <strong>操作人：</strong>家长（为自己孩子充值）/ 老师（为任教班级学生充值）<br>
+        <strong>流程：</strong>选择学生 → 查看当前余额 → 选择充值金额（固定档位/自定义）→ 模拟支付 → 充值到账<br>
+        <strong>关键点：</strong>Mock 支付流程，模拟完整的充值体验；显示充值记录
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3>📅 班级值班排班</h3>
+      <p style="font-size:12px;line-height:1.6;">
+        <strong>操作人：</strong>仅班主任<br>
+        <strong>流程：</strong>选择日期（周视图）→ 为每日添加值班学生 → 可拖拽调整 → 发布排班表<br>
+        <strong>关键点：</strong>班主任身份校验；班级学生列表选择；已发布的排班表全班可见（消息推送）；支持按周查看和修改
+      </p>
+    </div>
+  </div>
+</div>

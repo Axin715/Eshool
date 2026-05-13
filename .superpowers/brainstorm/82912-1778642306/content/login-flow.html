@@ -1,0 +1,50 @@
+<h2>登录方式如何设计？</h2>
+<p class="subtitle">微信小程序的标准登录方式 + 是否需要额外验证层</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">A. 纯微信授权（推荐）<br><small>体验最流畅，零额外输入</small></div>
+    <div class="mockup-body">
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center;">
+        <div style="background:#eee;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;">🏫</div>
+        <div style="font-weight:bold;font-size:14px;">数字校园</div>
+        <div style="font-size:11px;color:#666;">微信授权一键登录</div>
+        <div style="background:#4A90D9;color:#fff;padding:8px 24px;border-radius:20px;font-size:13px;margin-top:8px;">微信授权登录</div>
+        <div style="font-size:10px;color:#999;">授权后选择：我是家长 / 我是老师</div>
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:#444;text-align:left;">
+        <strong>流程：</strong><br>
+        1. 点击「微信授权登录」<br>
+        2. 获取微信头像+昵称+手机号<br>
+        3. 选择身份（家长/老师）<br>
+        4. 家长绑定学生 | 老师关联班级<br>
+        5. 进入主页
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">B. 微信+验证码<br><small>额外安全层，需要手机号验证</small></div>
+    <div class="mockup-body">
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center;">
+        <div style="background:#eee;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;">🏫</div>
+        <div style="font-weight:bold;font-size:14px;">数字校园</div>
+        <div style="font-size:11px;color:#666;">手机号验证登录</div>
+        <div style="background:#fff;border:1px solid #ddd;padding:6px 12px;border-radius:6px;font-size:12px;width:160px;text-align:center;">📱 输入手机号</div>
+        <div style="display:flex;gap:8px;width:160px;">
+          <div style="background:#fff;border:1px solid #ddd;padding:6px;border-radius:6px;font-size:12px;width:100px;">验证码</div>
+          <div style="background:#4A90D9;color:#fff;padding:6px;border-radius:6px;font-size:10px;white-space:nowrap;">获取</div>
+        </div>
+        <div style="background:#4A90D9;color:#fff;padding:8px 24px;border-radius:20px;font-size:13px;margin-top:4px;">登录</div>
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:#444;text-align:left;">
+        <strong>流程：</strong><br>
+        1. 微信授权获取头像昵称<br>
+        2. 输入手机号 + 验证码<br>
+        3. 选择身份（家长/老师）<br>
+        4. 绑定学生/班级<br>
+        5. 进入主页
+      </div>
+    </div>
+  </div>
+</div>
