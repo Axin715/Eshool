@@ -1,7 +1,7 @@
 {
-    "name" : "",
+    "name" : "数字校园",
     "appid" : "",
-    "description" : "",
+    "description" : "数字校园微信小程序",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -52,9 +52,17 @@
     "mp-weixin" : {
         "appid" : "",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "es6" : true,
+            "postcss" : true,
+            "minified" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "获取位置信息用于访校验证"
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true
