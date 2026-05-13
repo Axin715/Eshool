@@ -1,16 +1,109 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    {
+      "path": "pages/login/index",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/login/bind",
+      "style": {
+        "navigationBarTitleText": "绑定信息"
+      }
+    },
+    {
+      "path": "pages/features/leave/create",
+      "style": {
+        "navigationBarTitleText": "请假申请"
+      }
+    },
+    {
+      "path": "pages/features/leave/detail",
+      "style": {
+        "navigationBarTitleText": "请假详情"
+      }
+    },
+    {
+      "path": "pages/features/visit/create",
+      "style": {
+        "navigationBarTitleText": "访校申请"
+      }
+    },
+    {
+      "path": "pages/features/visit/detail",
+      "style": {
+        "navigationBarTitleText": "访校详情"
+      }
+    },
+    {
+      "path": "pages/features/psychology/create",
+      "style": {
+        "navigationBarTitleText": "预约申请"
+      }
+    },
+    {
+      "path": "pages/features/meal/recharge",
+      "style": {
+        "navigationBarTitleText": "饭卡充值"
+      }
+    },
+    {
+      "path": "pages/features/meal/records",
+      "style": {
+        "navigationBarTitleText": "充值记录"
+      }
+    },
+    {
+      "path": "pages/features/duty/index",
+      "style": {
+        "navigationBarTitleText": "班级值班排班"
+      }
+    },
+    {
+      "path": "pages/features/duty/edit",
+      "style": {
+        "navigationBarTitleText": "编辑排班"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "数字校园",
+    "navigationBarBackgroundColor": "#4A90D9",
+    "backgroundColor": "#F0F6FF"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4A90D9",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "static/tab/home.png",
+        "selectedIconPath": "static/tab/home-active.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/messages/index",
+        "iconPath": "static/tab/message.png",
+        "selectedIconPath": "static/tab/message-active.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/features/index",
+        "iconPath": "static/tab/features.png",
+        "selectedIconPath": "static/tab/features-active.png",
+        "text": "功能"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "iconPath": "static/tab/profile.png",
+        "selectedIconPath": "static/tab/profile-active.png",
+        "text": "我的"
+      }
+    ]
+  }
 }
